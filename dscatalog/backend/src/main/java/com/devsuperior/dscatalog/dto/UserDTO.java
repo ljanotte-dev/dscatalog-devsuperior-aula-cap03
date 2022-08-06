@@ -12,13 +12,12 @@ import com.devsuperior.dscatalog.entities.User;
 public class UserDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-
 	private Long id;
-	
+
 	@NotBlank(message = "Campo obrigatótio")
 	private String firstName;
 	private String lastName;
-	
+
 	@Email(message = "Favor entrar com email valido")
 	private String email;
 
@@ -40,7 +39,7 @@ public class UserDTO implements Serializable {
 		lastName = entity.getLastName();
 		email = entity.getEmail();
 		entity.getRoles().forEach(role -> this.roles.add(new RoleDTO(role)));
-		
+
 	}
 
 	public Long getId() {
@@ -78,7 +77,5 @@ public class UserDTO implements Serializable {
 	public Set<RoleDTO> getRoles() {
 		return roles;
 	}
-	
-	
 
 }

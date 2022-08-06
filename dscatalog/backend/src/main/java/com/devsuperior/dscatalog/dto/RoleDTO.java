@@ -7,10 +7,9 @@ import com.devsuperior.dscatalog.entities.Role;
 public class RoleDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	
 	private Long id;
 	private String authority;
-	
+
 	public RoleDTO() {
 	}
 
@@ -23,7 +22,7 @@ public class RoleDTO implements Serializable {
 		id = role.getId();
 		authority = getAuthority();
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -39,7 +38,5 @@ public class RoleDTO implements Serializable {
 	public void setAuthority(String authority) {
 		this.authority = authority;
 	}
-
-	
 
 }
