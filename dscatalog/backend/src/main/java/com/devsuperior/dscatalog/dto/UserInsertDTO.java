@@ -11,13 +11,12 @@ public class UserInsertDTO extends UserDTO {
 	UserInsertDTO() {
 		super();
 	}
-
+	
 	public String getPassword() {
 		return password;
 	}
 
-	public void setpassword(String passord) {
-		this.password = passord;
+	public void setPassword(String password) {
+		this.password = password;
 	}
-
 }

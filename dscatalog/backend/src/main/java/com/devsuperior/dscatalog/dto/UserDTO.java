@@ -13,16 +13,16 @@ public class UserDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
-
-	@NotBlank(message = "Campo obrigatótio")
+	
+	@NotBlank(message = "Campo obrigatório")
 	private String firstName;
 	private String lastName;
 
-	@Email(message = "Favor entrar com email valido")
+	@Email(message = "Favor entrar um email válido")
 	private String email;
-
+	
 	Set<RoleDTO> roles = new HashSet<>();
-
+	
 	public UserDTO() {
 	}
 
@@ -32,14 +32,13 @@ public class UserDTO implements Serializable {
 		this.lastName = lastName;
 		this.email = email;
 	}
-
+	
 	public UserDTO(User entity) {
 		id = entity.getId();
 		firstName = entity.getFirstName();
 		lastName = entity.getLastName();
 		email = entity.getEmail();
 		entity.getRoles().forEach(role -> this.roles.add(new RoleDTO(role)));
-
 	}
 
 	public Long getId() {
@@ -77,5 +76,4 @@ public class UserDTO implements Serializable {
 	public Set<RoleDTO> getRoles() {
 		return roles;
 	}
-
 }

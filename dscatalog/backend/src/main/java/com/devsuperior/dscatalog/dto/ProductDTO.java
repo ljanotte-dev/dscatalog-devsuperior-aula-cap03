@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
@@ -18,23 +19,25 @@ public class ProductDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
-
+	
 	@Size(min = 5, max = 60, message = "Deve ter entre 5 e 60 caracteres")
 	@NotBlank(message = "Campo requerido")
 	private String name;
 
 	@NotBlank(message = "Campo requerido")
 	private String description;
-
-	@Positive(message = "preço deve ser um valor positivo")
+	
+	@Positive(message = "Preço deve ser um valor positivo")
 	private Double price;
+	
 	private String imgUrl;
-
-	@PastOrPresent(message = "A data do produti não pode er futura")
+	
+	@PastOrPresent(message = "A data do produto não pode ser futura")
 	private Instant date;
-
+	
+	@NotEmpty(message = "Produto sem categoria não é permitido")
 	private List<CategoryDTO> categories = new ArrayList<>();
-
+	
 	public ProductDTO() {
 	}
 
@@ -46,16 +49,16 @@ public class ProductDTO implements Serializable {
 		this.imgUrl = imgUrl;
 		this.date = date;
 	}
-
+	
 	public ProductDTO(Product entity) {
-		id = entity.getId();
-		name = entity.getName();
-		description = entity.getDescription();
-		price = entity.getPrice();
-		imgUrl = entity.getImgUrl();
-		date = entity.getDate();
+		this.id = entity.getId();
+		this.name = entity.getName();
+		this.description = entity.getDescription();
+		this.price = entity.getPrice();
+		this.imgUrl = entity.getImgUrl();
+		this.date = entity.getDate();
 	}
-
+	
 	public ProductDTO(Product entity, Set<Category> categories) {
 		this(entity);
 		categories.forEach(cat -> this.categories.add(new CategoryDTO(cat)));
